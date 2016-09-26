@@ -235,17 +235,17 @@ type Row struct {
 
 // A Panel is a component of a Row. It can be a chart, a text or a single stat panel
 type Panel struct {
-	Content         string           `json:"content"`
-	Editable        bool             `json:"editable"`
-	Error           bool             `json:"error"`
+	Content         string           `json:"content,omitempty"`
+	Editable        bool             `json:"editable,omitempty"`
+	Error           bool             `json:"error,omitempty"`
 	ID              int              `json:"id"`
-	Mode            string           `json:"mode"`
-	Span            int              `json:"span"`
-	Style           struct{}         `json:"style"`
-	Title           string           `json:"title"`
-	Type            string           `json:"type"`
-	Fill            int              `json:"fill"`
-	Stack           bool             `json:"stack"`
+	Mode            string           `json:"mode,omitempty"`
+	Span            int              `json:"span,omitempty"`
+	Style           struct{}         `json:"style,omitempty"`
+	Title           string           `json:"title,omitempty"`
+	Type            string           `json:"type,omitempty"`
+	Fill            int              `json:"fill,omitempty"`
+	Stack           bool             `json:"stack,omitempty"`
 	Targets         []Target         `json:"targets" toml:"target"`
 	Metrics         []Metric         `json:"-" toml:"metric"`
 	SeriesOverrides []SeriesOverride `json:"seriesOverrides,omitempty" toml:"override"`
@@ -258,13 +258,15 @@ type Panel struct {
 
 // A Target specify the metrics used by the Panel
 type Target struct {
-	Alias       string    `json:"alias"`
-	Hide        bool      `json:"hide"`
-	Measurement string    `json:"measurement"`
-	GroupBy     []GroupBy `json:"groupBy"`
+	Alias       string    `json:"alias,omitempty"`
+	Hide        bool      `json:"hide,omitempty"`
+	Measurement string    `json:"measurement,omitempty"`
+	GroupBy     []GroupBy `json:"groupBy,omitempty"`
 	Select      []Selects `json:"select,omitempty"`
-	Tags        []Tag     `json:"tags"`
+	Tags        []Tag     `json:"tags,omitempty"`
 	DsType      string    `json:"dsType,omitempty"`
+	Target      string    `json:"target"`
+	RefID       string    `json:"refId"`
 	Transform   string    `json:"transform,omitempty" toml:"transform,omitempty"`
 }
 
